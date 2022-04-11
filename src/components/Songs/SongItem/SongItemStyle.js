@@ -1,0 +1,18 @@
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
+  margin-top: 50px;
+  iframe {
+    margin-bottom: 7px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 7px;
+    border-image: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045) 1;
+  }
+  p {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+  }
+`;
