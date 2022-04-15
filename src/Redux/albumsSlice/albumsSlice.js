@@ -2,21 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const albumSlice = createSlice({
   name: "album",
-  initialState: { selectedSinger: [], disabled: false, selectMeSinger: false },
+  initialState: { selectedSinger: [] },
   reducers: {
     clickedSinger: (state, action) => {
+      state.disabled = true;
+
       const isExists = state.selectedSinger.find(album => album.id === action.payload.id);
       if (isExists) {
-        state.selectMeSinger = !state.selectMeSinger;
+        state.selectedSinger = state.selectedSinger.filter(singer => singer.id !== action.payload.id);
+
         return;
       }
       state.selectedSinger = [...state.selectedSinger, action.payload];
-
-      console.log("clickedSinger", state.selectedSinger);
     },
-    // activeSinger: (state, action) => {
-    //   state.selectMeSinger = !state.selectMeSinger;
-    // },
   },
 });
 export const { clickedSinger, clickedButton, activeSinger } = albumSlice.actions;

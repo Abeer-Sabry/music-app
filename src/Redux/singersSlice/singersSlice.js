@@ -4,20 +4,16 @@ export const getSingersAsync = createAsyncThunk("singer/getSingersAsync", async 
   const { rejectWithValue } = thunkAPI;
   try {
     const res = await fetch("https://abeer-rest-api.herokuapp.com/music");
-    // const res = await fetch("https://naga-electron.herokuapp.com/api/v1/products");
-    // console.log("response", res);
     const singers = await res.json();
-
     return singers;
   } catch (error) {
     rejectWithValue(error.message);
-    console.log("error", error);
   }
 });
 
 const singerSlice = createSlice({
   name: "singer",
-  initialState: { singers: [], loading: false, error: "" },
+  initialState: { singers: [], loading: false, error: null },
   extraReducers: {
     [getSingersAsync.pending]: state => {
       state.loading = true;

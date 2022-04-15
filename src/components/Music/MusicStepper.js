@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Singers from "../Singers/Singers";
 import Albums from "../Albums/Albums";
 import Songs from "../Songs/Songs";
+import RegisterForm from "../Form/RegisterForm";
 // ---- REUSABLE-COMPONENTS ---- //
 import { BackButton, NextButton } from "../../reusableComponents/Button";
 // ---- CONSTANTS ---- //
@@ -76,13 +77,15 @@ const MusicStepper = () => {
         return <Albums />;
       case 2:
         return <Songs />;
+      case 3:
+        return <RegisterForm />;
       default:
         return "unKnown";
     }
   };
   return (
-    <CustomContainer>
-      <Box sx={{ width: "100%" }}>
+    <CustomContainer style={{ marginBottom: "50px" }}>
+      <Box className="box" sx={{ width: "100%" }}>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};

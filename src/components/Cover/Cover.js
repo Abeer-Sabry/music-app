@@ -1,11 +1,16 @@
 import React from "react";
+// ----- STYLED-COMPONENTS ----- //
 import { Wrapper } from "./CoverStyle";
+// ----- CONSTANTS ----- //
+import { CustomContainer } from "../../constants/constants";
 const Cover = () => {
   return (
     <Wrapper>
-      <h1>
-        discover and buy <br /> your perfect sound
-      </h1>
+      <CustomContainer>
+        <h1>
+          discover and buy <br /> your perfect sound
+        </h1>
+      </CustomContainer>
     </Wrapper>
   );
 };

@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
+// ---- COMPONENTS---- //
+import SingerItem from "./singerItem/SingerItem";
+import Loader from "../Loader/Loader";
+
 // ---- REDUX ---- //
 import { useDispatch, useSelector } from "react-redux";
 import { getSingersAsync } from "../../Redux/singersSlice/singersSlice";
-// ---- MATERIAL UI ---- //
-import { Grid } from "@mui/material";
 import { clickedSinger } from "../../Redux/albumsSlice/albumsSlice";
-// import { data } from "../../data";
 // ---- STYLED-COMPONENTS ---- //
 import { SingersWrapper } from "./SingersStyle";
-import SingerItem from "./singerItem/SingerItem";
-import { Content, CustomContainer, MainWrapper } from "../../constants/constants";
+// ---- CONSTANTS ---- //
+import { Content, MainWrapper } from "../../constants/constants";
 const Singers = () => {
   // REDUX
   const dispatch = useDispatch();
-  const { singers } = useSelector(state => state.singerStep);
+  const { singers, loading } = useSelector(state => state.singerStep);
   const { selectedSinger } = useSelector(state => state.album);
   // ALBUMS-ARRAY
   const selectAlbums = selectedSinger.map(item => item.albums);
@@ -40,15 +41,20 @@ const Singers = () => {
   }, [dispatch]);
 
   return (
-    // <CustomContainer>
     <MainWrapper>
-      <SingersWrapper>
-        {singers.map(singer => (
-          <div key={singer.id} onClick={() => dispatch(clickedSinger(singer))}>
-            <SingerItem {...singer} />
-          </div>
-        ))}
-      </SingersWrapper>
+      {
+        <SingersWrapper>
+          {loading ? (
+            <Loader />
+          ) : (
+            singers.map(singer => (
+              <div key={singer.id} onClick={() => dispatch(clickedSinger(singer))}>
+                <SingerItem {...singer} />
+              </div>
+            ))
+          )}
+        </SingersWrapper>
+      }
       <Content>
         <p>
           count: <span>{finalSongsArray.length} </span>
@@ -59,7 +65,6 @@ const Singers = () => {
         </p>
       </Content>
     </MainWrapper>
-    // </CustomContainer>
   );
 };
 
