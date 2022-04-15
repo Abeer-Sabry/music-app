@@ -25,7 +25,7 @@ const Songs = () => {
       <SongsWrapper>
         {selectedAlbums.map(song => {
           return (
-            <div onClick={() => dispatch(clickedSong(song))}>
+            <div key={song.id} onClick={() => dispatch(clickedSong(song))}>
               <SongItem {...song} />
             </div>
           );
