@@ -101,7 +101,9 @@ const MusicStepper = () => {
               }
               return (
                 <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
+                  <StepLabel color="orange" {...labelProps}>
+                    {label}
+                  </StepLabel>
                 </Step>
               );
             })}
