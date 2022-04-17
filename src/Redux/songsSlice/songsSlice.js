@@ -5,7 +5,7 @@ const songSlice = createSlice({
   initialState: { selectedAlbums: [], SelectedSongs: [], loading: false, error: "" },
   reducers: {
     clickedAlbum: (state, action) => {
-      // const isExists = state.selectedAlbums.find(album => album.id === action.payload.id);
+      // const isExists = state.selectedAlbums.find(album => album.id === action.payload.map(al => al.id.find(id => id)));
       // console.log("exist", isExists);
 
       // if (isExists) {
@@ -13,9 +13,6 @@ const songSlice = createSlice({
       //   return;
       // }
       state.selectedAlbums = [...state.selectedAlbums, ...action.payload];
-
-      console.log("StateSelectedALBUMS", state.selectedAlbums);
-      console.log("payload", action.payload);
     },
     clickedSong: (state, action) => {
       const isExists = state.SelectedSongs.find(al => al.id === action.payload.id);
@@ -24,7 +21,6 @@ const songSlice = createSlice({
         return;
       }
       state.SelectedSongs = [...state.SelectedSongs, action.payload];
-      console.log("songsRedux", state.SelectedSongs);
     },
   },
 });

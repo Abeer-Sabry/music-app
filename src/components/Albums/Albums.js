@@ -15,13 +15,6 @@ const Albums = () => {
   // LOOPS
   const albums = selectedSinger.map(singer => singer.albums);
 
-  let albumArray = [];
-  for (let i = 0; i < albums.length; i++) {
-    const arr = albums[i];
-    albumArray = albumArray.concat(arr);
-    console.log("albumArray", albumArray);
-  }
-
   const price = selectedAlbums.reduce((total, song) => {
     return total + song.price;
   }, 0);

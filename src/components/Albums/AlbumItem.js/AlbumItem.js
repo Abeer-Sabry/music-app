@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+// ---- REDUX ---- //
 import { useDispatch } from "react-redux";
 import { clickedAlbum } from "../../../Redux/songsSlice/songsSlice";
+// ---- STYLED-COMPONENTS ---- //
 import { Wrapper } from "./AlbumItemStyle";
 
 const AlbumItem = ({ id, img, title, songs, selected }) => {
@@ -18,7 +20,7 @@ const AlbumItem = ({ id, img, title, songs, selected }) => {
         onClick={() => {
           setSelectMe(!selectMe);
           dispatch(clickedAlbum(songs));
-          console.log("dispatched", ...songs);
+          // console.log("dispatched", ...songs);
         }}
       >
         <img src={img} alt="" />
